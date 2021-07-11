@@ -9,7 +9,7 @@ html {
 }
 body {
 	margin: 0;
-	font: 110%/1.2 "Raleway", serif;
+	font: 110%/1.2 "Raleway", sans-serif;
 	line-height: 1.2;
 	text-align: justify;
 }
@@ -27,8 +27,8 @@ p {
 }
 
 .circular_image {
-	width: 100px;
-	height: 100px;
+	width: 80px;
+	height: 80px;
 	border-radius: 50%;
 	overflow: hidden;
 	background-color: blue;
@@ -45,7 +45,7 @@ footer {
 }
 
 #small_text {
-	font: 90%/1 "Raleway", serif;
+	font: 90%/1 "Raleway", sans-serif;
 	text-align: justify;
 }
 
@@ -154,7 +154,7 @@ hr {
 	font-style: italic
 }
 .content .profile-picture {
-	height: 250px;
+	height: 200px;
 	width: auto;
 	position: relative;
 	margin: -20px 25px 0 0;
