@@ -1,0 +1,201 @@
+% Juan Ramirez – Curriculum Vitae
+% Build (run twice so the page count resolves):
+%   pdflatex -jobname=Juan_Ramirez_CV main.tex
+% The website links cv/Juan_Ramirez_CV.pdf, so commit the rebuilt PDF with any edit.
+\documentclass[11pt,letterpaper]{article}
+
+% ---------------------------
+% Packages & typography
+% ---------------------------
+\usepackage[margin=0.8in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[sc]{mathpazo}                 % Palatino, true small caps, lining figures
+\usepackage[tracking=smallcaps,expansion=false]{microtype}
+\usepackage{enumitem}
+\usepackage{ragged2e}
+\usepackage{needspace}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\definecolor{darkblue}{RGB}{0,50,150}
+\definecolor{rulegray}{gray}{0.55}
+\usepackage[colorlinks=true,allcolors=darkblue]{hyperref}   % keep hyperref last
+\hypersetup{
+  pdfauthor={Juan Ramirez},
+  pdftitle={Juan Ramirez – Curriculum Vitae},
+  pdfsubject={Curriculum Vitae},
+  pdfkeywords={constrained optimization, deep learning, Lagrangian methods, feasible learning, machine learning},
+}
+
+% Paragraphs, lists, page breaking
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.25em}
+\setlength{\RaggedRightRightskip}{0pt plus 4em}
+\RaggedRight
+\setlength{\emergencystretch}{2em}
+\clubpenalty=10000 \widowpenalty=10000 \displaywidowpenalty=10000
+\raggedbottom
+\setlist[itemize]{leftmargin=1.2em, itemsep=0.2em, topsep=0.2em, parsep=0pt}
+\setlist[enumerate]{leftmargin=*, align=left, labelsep=0.6em, itemsep=0.25em, topsep=0.2em, parsep=0pt}
+
+% Footer: name and "page x of y"
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\small Juan Ramirez \textperiodcentered\ Page \thepage\ of \pageref*{LastPage}}
+
+% ---------------------------
+% Helpers
+% ---------------------------
+\newcommand{\me}{\textbf{Juan Ramirez}}
+\newcommand{\eqc}{*}                        % equal contribution
+\newcommand{\eqs}{\textsuperscript{\dag}}   % equal supervision
+\newcommand{\sep}{\enspace\textcolor{rulegray}{\textbar}\enspace}
+
+% Entry: bold title left, italic date right; body below, never separated from the title
+\newcommand{\entry}[3]{%
+  \par\addvspace{0.45em}%
+  {\noindent\textbf{#1}\hfill\textit{#2}\par}%
+  \nobreak\addvspace{0.1em}%
+  {\noindent #3\par}%
+}
+
+% List item with a date flush right
+\newcommand{\ditem}[2]{\item #1\unskip\nobreak\hfill\mbox{#2}}
+
+% Section heading: small caps over a rule, kept with the lines that follow
+\newcommand{\cvsection}[1]{%
+  \par\addvspace{1.1em}%
+  \Needspace{4\baselineskip}%
+  {\noindent\large\scshape #1\par}%
+  \nobreak\vspace{-0.55em}%
+  {\noindent\color{rulegray}\rule{\textwidth}{0.4pt}\par}%
+  \nobreak\addvspace{0.45em}%
+}
+
+\begin{document}
+
+% ---------------------------
+% Header
+% ---------------------------
+{\LARGE\bfseries Juan Ramirez\par}
+\vspace{0.3em}
+Ph.D. candidate, Mila – Quebec AI Institute \& Université de Montréal \hfill Montréal, Canada\par
+{\small
+\href{mailto:juan.ramirez@mila.quebec}{juan.ramirez@mila.quebec}\sep
+\href{https://juan43ramirez.github.io}{juan43ramirez.github.io}\sep
+\href{https://github.com/juan43ramirez}{GitHub}\sep
+\href{https://scholar.google.com/citations?user=yop0kRkAAAAJ}{Google Scholar}\sep
+\href{https://www.linkedin.com/in/juan-ramirez-11ab2b141}{LinkedIn}\sep
+\href{https://x.com/juan43ramirez}{X}\par}
+\vspace{0.5em}
+\textbf{Research interests:} constrained deep learning; Lagrangian methods; Feasible Learning.\par
+
+% ---------------------------
+\cvsection{Education}
+
+\entry{Ph.D. in Computer Science, Université de Montréal \& Mila – Quebec AI Institute}{Sep 2022 – present}{Advisor: Simon Lacoste-Julien. Expected graduation: mid-2027. \hfill Montréal, Canada}
+
+\entry{B.Sc. in Mathematical Engineering, Universidad EAFIT}{Jan 2016 – Jun 2021}{President of the Mathematical Engineering student chapter (2018–2019). \hfill Medellín, Colombia}
+
+\entry{Visiting student, UCLouvain (Université catholique de Louvain)}{Jan 2019 – Jun 2019}{\hfill Louvain-la-Neuve, Belgium}
+
+% ---------------------------
+\cvsection{Research Experience}
+
+\entry{Summer Associate, Machine Learning Research, Morgan Stanley}{Jun 2026 – Aug 2026}{Advisor: Ari Karchmer. \hfill New York, NY, USA \\
+Research on constrained deep learning, building on the Feasible Learning paradigm.}
+
+\entry{Research Intern, Mila – Quebec AI Institute}{Nov 2021 – Mar 2022}{Advisors: Jose Gallego-Posada and Simon Lacoste-Julien. \hfill Montréal, Canada \\
+Developed scalable constrained optimization algorithms to enforce requirements such as sparsity, fairness, and safety on neural networks; this code became the first version of Cooper.}
+
+\entry{Research Intern, Tuya S.A.}{Jan 2020 – Jun 2020}{Advisor: Sergio Arboleda. \hfill Medellín, Colombia \\
+Developed credit-risk machine learning models for clients with limited credit history.}
+
+\entry{Research Intern, McKinsey \& Company}{Jun 2019 – Oct 2019}{Advisors: Antoine Stevens and Patrick Dehout. \hfill Louvain-la-Neuve, Belgium \\
+Developed machine learning models for clients in the agriculture and climate sectors.}
+
+% ---------------------------
+\cvsection{Publications}
+
+{\small \eqc\ equal contribution; \eqs\ equal supervision.\par}
+
+\textbf{Conference papers}
+\begin{enumerate}[label={[C\arabic*]}]
+  \item \me, Meraj Hashemizadeh, and Simon Lacoste-Julien. \emph{Position: Adopt Constraints Over Fixed Penalties in Deep Learning}. NeurIPS 2026 (Position Paper Track). \href{https://arxiv.org/abs/2505.20628}{[pdf]} \href{https://github.com/merajhashemi/constraints-vs-penalties}{[code]}
+  \item \me\ and Simon Lacoste-Julien. \emph{Dual Optimistic Ascent (PI Control) is the Augmented Lagrangian Method in Disguise}. ICLR 2026. \href{https://arxiv.org/abs/2509.22500}{[pdf]} \href{https://github.com/juan43ramirez/pi-control-is-alm}{[code]}
+  \item \me\eqc, Ignacio Hounie\eqc, Juan Elenter\eqc, Jose Gallego-Posada\eqc, Meraj Hashemizadeh, Alejandro Ribeiro\eqs, and Simon Lacoste-Julien\eqs. \emph{Feasible Learning}. AISTATS 2025. \href{https://arxiv.org/abs/2501.14912}{[pdf]} \href{https://github.com/juan43ramirez/feasible-learning}{[code]}
+  \item Motahareh Sohrabi\eqc, \me\eqc, Tianyue H. Zhang, Simon Lacoste-Julien, and Jose Gallego-Posada. \emph{On PI Controllers for Updating Lagrange Multipliers in Constrained Optimization}. ICML 2024. \href{https://arxiv.org/abs/2406.04558}{[pdf]} \href{https://github.com/motahareh-sohrabi/nuPI}{[code]}
+  \item Meraj Hashemizadeh\eqc, \me\eqc, Rohan Sukumaran, Golnoosh Farnadi, Simon Lacoste-Julien, and Jose Gallego-Posada. \emph{Balancing Act: Constraining Disparate Impact in Sparse Models}. ICLR 2024. \href{https://arxiv.org/abs/2310.20673}{[pdf]} \href{https://github.com/merajhashemi/balancing-act}{[code]}
+  \item Jose Gallego-Posada, \me, Akram Erraqabi, Yoshua Bengio, and Simon Lacoste-Julien. \emph{Controlled Sparsity via Constrained Optimization or: How I Learned to Stop Tuning Penalties and Love Constraints}. NeurIPS 2022. \href{https://arxiv.org/abs/2208.04425}{[pdf]} \href{https://github.com/gallego-posada/constrained_sparsity}{[code]}
+\end{enumerate}
+
+\textbf{Preprints}
+\begin{enumerate}[label={[P\arabic*]}]
+  \item Jose Gallego-Posada\eqc, \me\eqc, Meraj Hashemizadeh\eqc, and Simon Lacoste-Julien. \emph{Cooper: A Library for Constrained Optimization in Deep Learning}. arXiv:2504.01212, 2025. \href{https://arxiv.org/abs/2504.01212}{[pdf]} \href{https://github.com/cooper-org/cooper}{[code]}
+\end{enumerate}
+
+\textbf{Workshop papers}
+\begin{enumerate}[label={[W\arabic*]}]
+  \item \me, Rohan Sukumaran, Quentin Bertrand, and Gauthier Gidel. \emph{Omega: Optimistic EMA Gradients}. LatinX in AI (LXAI) Workshop at ICML 2023 (Oral). \href{https://arxiv.org/abs/2306.07905}{[pdf]} \href{https://github.com/juan43ramirez/omega}{[code]}
+  \item \me\ and Jose Gallego-Posada. \emph{L\textsubscript{0}onie: Compressing COINs with L\textsubscript{0}-constraints}. Sparsity in Neural Networks (SNN) Workshop 2022. \href{https://arxiv.org/abs/2207.04144}{[pdf]} \href{https://github.com/juan43ramirez/l0onie}{[code]}
+  \item Jose Gallego-Posada, \me, and Akram Erraqabi. \emph{Flexible Learning of Sparse Neural Networks via Constrained L\textsubscript{0} Regularization}. LXAI Workshop at NeurIPS 2021 (Best Poster). \href{https://openreview.net/forum?id=SUQsWPcK39P}{[pdf]}
+\end{enumerate}
+
+% ---------------------------
+\cvsection{Honors and Awards}
+
+\begin{itemize}
+  \ditem{RBC Borealis Fellowship}{2024–2025}
+  \ditem{Bourse d'excellence de l'Association des diplômés de l'Université de Montréal (ADUM)}{2024}
+  \ditem{Bourse en intelligence artificielle, Université de Montréal}{2024}
+  \ditem{Best Poster Award, LatinX in AI Workshop at NeurIPS}{2021}
+  \ditem{Full scholarship for the B.Sc., Universidad EAFIT}{2016}
+\end{itemize}
+
+% ---------------------------
+\cvsection{Invited Talks}
+
+\begin{itemize}
+  \ditem{\emph{Feasible Learning}. Machine Learning Research Speaker Series, Morgan Stanley, New York}{May 2026}
+  \ditem{\emph{Feasible Learning}. Montréal Machine Learning and Optimization (MTL MLOpt) \href{https://youtu.be/htKvFNokwQc}{[video]}}{Nov 2025}
+  \ditem{\emph{Mitigating the Disparate Impact of Pruning with Constrained Optimization}. MTL MLOpt \href{https://mtl-mlopt.github.io/talks_entries/2023/2023_12_07_Juan_Ramirez.html}{\mbox{[abstract]}}}{Dec 2023}
+\end{itemize}
+
+% ---------------------------
+\cvsection{Open-Source Software}
+
+\textbf{Cooper}: a PyTorch library for constrained optimization in deep learning
+(\href{https://github.com/cooper-org/cooper}{GitHub}, \href{https://cooper.readthedocs.io}{documentation}; \texttt{pip install cooper-optim}).
+Co-lead developer and maintainer; version 1.0 released in April 2025 with a companion paper [P1]; 160+ GitHub stars.
+
+% ---------------------------
+\cvsection{Teaching and Mentoring}
+
+\entry{Teaching Assistant, Université de Montréal}{Fall 2023, Fall 2024}{Probabilistic Graphical Models, taught by Simon Lacoste-Julien.}
+
+\entry{Teaching Assistant, Université de Montréal}{Winter 2024}{Adversarial Machine Learning, taught by Gauthier Gidel.}
+
+\entry{Teaching Assistant, summer schools}{2024}{Lisbon Machine Learning Summer School (LxMLS) and Tropical Probabilistic AI School.}
+
+\entry{Co-supervisor of undergraduate research projects}{2023}{Daniel Otero and Isabel Urrego, B.Sc. students in Mathematical Engineering (Colombia), with Jose Gallego-Posada.}
+
+% ---------------------------
+\cvsection{Academic Service}
+
+\begin{itemize}
+  \item Associate Program Chair, \href{https://icml.cc/Conferences/2025/Committees}{ICML 2025} (organizing committee).
+  \item Co-organizer, first \href{https://constrained-opt-ml.github.io}{Workshop on Constrained Optimization for Machine Learning}, NeurIPS 2025.
+  \item Reviewer for TMLR, ICLR 2027, ICLR 2026, ICML 2025, AISTATS 2025, NeurIPS 2024, and the LXAI workshops at NeurIPS 2024, ICML 2024, and ICML 2023.
+  \item Reviewer of student applications, Mila (2024, 2025) and Khipu (2025).
+  \item Social chair, LXAI Workshop at NeurIPS 2024; visa chair, LXAI Workshop at ICML 2024.
+\end{itemize}
+
+% ---------------------------
+\cvsection{Skills and Languages}
+
+\textbf{Programming:} Python (PyTorch, JAX, NumPy), Slurm, Weights \& Biases, Git, \LaTeX.\\
+\textbf{Languages:} Spanish (native), English (C1), French (B2).
+
+\end{document}

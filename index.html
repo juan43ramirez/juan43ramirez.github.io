@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f141b" media="(prefers-color-scheme: dark)">
+
+  <title>Juan Ramirez — Constrained Deep Learning</title>
+
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="Juan Ramirez">
+  <meta
+    name="description"
+    content="Juan Ramirez works on constrained deep learning: scalable optimization methods for training neural networks under explicit requirements such as fairness, sparsity, safety, and reliability.">
+
+  <link rel="canonical" href="https://juan43ramirez.github.io/">
+  <link rel="icon" type="image/png" sizes="32x32" href="resources/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Juan Ramirez RSS" href="/feed.xml">
+  <link rel="stylesheet" href="styles/main.css">
+
+  <meta property="og:title" content="Juan Ramirez — Constrained Deep Learning">
+  <meta property="og:description" content="Constrained deep learning, feasible learning, and optimization methods for training neural networks under explicit requirements such as fairness, sparsity, safety, and reliability.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://juan43ramirez.github.io/">
+  <meta property="og:image" content="https://juan43ramirez.github.io/resources/mug.jpeg">
+  <meta property="og:image:alt" content="Portrait of Juan Ramirez">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@juan43ramirez">
+  <meta name="twitter:title" content="Juan Ramirez — Constrained Deep Learning">
+  <meta name="twitter:description" content="Constrained deep learning, feasible learning, and optimization methods for training neural networks under explicit requirements such as fairness, sparsity, safety, and reliability.">
+  <meta name="twitter:image" content="https://juan43ramirez.github.io/resources/mug.jpeg">
+  <meta name="twitter:image:alt" content="Portrait of Juan Ramirez">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DD6WEZ9711"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DD6WEZ9711');
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Juan Ramirez",
+    "alternateName": "Juan Ramirez De Los Rios",
+    "image": "https://juan43ramirez.github.io/resources/mug.jpeg",
+    "jobTitle": "PhD Candidate",
+    "url": "https://juan43ramirez.github.io/",
+    "email": "mailto:juan.ramirez@mila.quebec",
+    "affiliation": [
+      {
+        "@type": "Organization",
+        "name": "Mila - Quebec AI Institute"
+      },
+      {
+        "@type": "Organization",
+        "name": "Université de Montréal"
+      }
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Mila - Quebec AI Institute"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Universidad EAFIT"
+    },
+    "knowsAbout": [
+      "Constrained Deep Learning",
+      "Constrained Optimization",
+      "Feasible Learning",
+      "Lagrangian Methods",
+      "Fairness in Machine Learning",
+      "Safety in Machine Learning",
+      "Sparsity"
+    ],
+    "sameAs": [
+      "https://scholar.google.com/citations?user=yop0kRkAAAAJ&hl=en",
+      "https://github.com/juan43ramirez",
+      "https://www.linkedin.com/in/juan-ramirez-11ab2b141",
+      "https://twitter.com/juan43ramirez"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="site-title" href="index.html">Juan Ramirez</a>
+
+        <nav aria-label="Primary">
+          <ul class="nav-list">
+            <li><a href="#about">About</a></li>
+            <li><a href="#selected-work">Selected Work</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#service">Service</a></li>
+            <li><a href="#talks">Invited Talks</a></li>
+            <li>
+              <a
+                href="cv/Juan_Ramirez_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer">
+                CV
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content">
+      <section id="about" class="hero section">
+        <div class="container hero-grid">
+          <div class="hero-media">
+            <img
+              class="profile-picture"
+              src="resources/mug.jpeg"
+              alt="Photo of Juan Ramirez"
+              width="280"
+              height="280"
+              loading="eager"
+              decoding="async">
+
+            <nav class="hero-social" aria-label="Profile links">
+              <a href="https://scholar.google.com/citations?user=yop0kRkAAAAJ&hl=en" target="_blank" rel="me noopener noreferrer">Scholar</a>&nbsp;·&nbsp;
+              <a href="https://github.com/juan43ramirez" target="_blank" rel="me noopener noreferrer">GitHub</a>&nbsp;·&nbsp;
+              <a href="https://www.linkedin.com/in/juan-ramirez-11ab2b141" target="_blank" rel="me noopener noreferrer">LinkedIn</a>&nbsp;·&nbsp;
+              <a href="https://twitter.com/juan43ramirez" target="_blank" rel="me noopener noreferrer">X</a>
+            </nav>
+          </div>
+
+          <div class="hero-copy">
+            <h1 class="hero-name">Juan Ramirez</h1>
+            <p class="hero-meta">PhD Candidate · Mila &amp; Université de Montréal · Expected graduation: mid-2027</p>
+
+            <p class="lead">
+              I work on <strong>constrained deep learning</strong>: scalable methods for training neural networks under explicit requirements such as fairness, sparsity, and safety. I am supervised by <a href="https://www.iro.umontreal.ca/~slacoste/" target="_blank" rel="noopener noreferrer">Simon Lacoste-Julien</a>.
+            </p>
+
+            <p class="hero-support">
+              My research spans the algorithms, theory, and applications of Lagrangian methods for these problems. I also work on <strong>Feasible Learning</strong> and co-develop
+              <a href="https://github.com/cooper-org/cooper" target="_blank" rel="noopener noreferrer">Cooper</a>,
+              an open-source PyTorch library for constrained optimization.
+            </p>
+
+            <p class="hero-support">
+              During my PhD, I interned on the Machine Learning Research team at Morgan Stanley in New York (Summer 2026). Before that, I completed a BSc in Mathematical Engineering at Universidad EAFIT and held research internships at Mila and McKinsey.
+            </p>
+
+            <div class="hero-actions">
+              <a
+                class="button button-secondary"
+                href="cv/Juan_Ramirez_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer">
+                View CV
+              </a>
+              <a
+                class="button button-secondary"
+                href="mailto:juan.ramirez@mila.quebec">
+                Email
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="selected-work" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Selected Work</h2>
+          </div>
+
+          <div class="card-grid">
+
+            <article class="card">
+              <p class="card-kicker">Learning paradigm</p>
+              <h3>
+                <a href="https://arxiv.org/abs/2501.14912" target="_blank" rel="noopener noreferrer">
+                  Feasible Learning: A Sample-Centric Paradigm
+                </a>
+              </h3>
+              <p>
+                Feasible Learning trains models by solving a feasibility problem that bounds the loss on every training example, rather than optimizing for average performance. It is a sample-centric alternative to ERM for settings where tail behavior and per-example reliability matter.
+              </p>
+            </article>
+
+            <article class="card">
+              <p class="card-kicker">Open-source software</p>
+              <h3>
+                <a href="https://arxiv.org/abs/2504.01212" target="_blank" rel="noopener noreferrer">
+                  Cooper: A PyTorch Library for Constrained Deep Learning
+                </a>
+              </h3>
+              <p>
+                Cooper is an open-source package for solving constrained optimization problems in deep learning. It implements Lagrangian-based first-order update schemes and makes it easy to combine constrained optimization algorithms with PyTorch models, autograd, and modern training pipelines. Now at 160+ stars on
+                <a href="https://github.com/cooper-org/cooper" target="_blank" rel="noopener noreferrer">GitHub</a>;
+                see the
+                <a href="https://cooper.readthedocs.io/en/latest/" target="_blank" rel="noopener noreferrer">docs</a>.
+              </p>
+            </article>
+
+            <article class="card">
+              <p class="card-kicker">Theory</p>
+              <h3>
+                <a href="https://arxiv.org/abs/2509.22500" target="_blank" rel="noopener noreferrer">
+                  Dual PI Control is the Augmented Lagrangian Method in Disguise
+                </a>
+              </h3>
+              <p>
+                We show that optimistic gradient ascent (PI control) on the dual variables of a Lagrangian is equivalent to gradient descent-ascent on the Augmented Lagrangian in the single-step, first-order regime commonly used in constrained deep learning. The result helps explain the practical success of dual optimism and establish its limits.
+              </p>
+            </article>
+
+            <article class="card">
+              <p class="card-kicker">Perspective</p>
+              <h3>
+                <a href="https://arxiv.org/abs/2505.20628" target="_blank" rel="noopener noreferrer">
+                  Position: Adopt Constraints Over Fixed Penalties in Deep Learning
+                </a>
+              </h3>
+              <p>
+                We argue that fixed penalty terms are the wrong default for enforcing explicit requirements in deep learning. When a problem naturally specifies targets to satisfy, we should formulate it as a constrained optimization problem and use methods designed to enforce those requirements directly.
+              </p>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="news" class="section">
+        <div class="container narrow">
+          <div class="section-header">
+            <h2 class="section-title">News</h2>
+          </div>
+
+          <ul class="news-list">
+            <li>
+              <time datetime="2026-06-15">Jun 15, 2026</time>
+              <div>
+                I started as a Summer Associate on the Machine Learning Research team at Morgan Stanley in New York, mentored by <a href="https://arikarchmer.com/" target="_blank" rel="noopener noreferrer">Ari Karchmer</a>.
+              </div>
+            </li>
+            <li>
+              <time datetime="2026-05-21">May 21, 2026</time>
+              <div>
+                I will give a talk on
+                <a href="https://arxiv.org/abs/2501.14912" target="_blank" rel="noopener noreferrer">Feasible Learning</a>
+                at the Morgan Stanley ML Research Speaker Series.
+              </div>
+            </li>
+            <li>
+              <time datetime="2026-01-26">Jan 26, 2026</time>
+              <div>
+                Our paper
+                <a href="https://arxiv.org/abs/2509.22500" target="_blank" rel="noopener noreferrer">Dual Optimistic Ascent (PI Control) is the Augmented Lagrangian Method in Disguise</a>
+                has been accepted at ICLR 2026. See you in Rio de Janeiro!
+              </div>
+            </li>
+            <li>
+              <time datetime="2025-11-19">Nov 19, 2025</time>
+              <div>
+                I am honored to be selected as an
+                <a href="https://rbcborealis.com/news/the-2024-2025-rbc-borealis-fellows-driving-the-future-of-ai" target="_blank" rel="noopener noreferrer">RBC Borealis AI Fellow</a>
+                for 2024–2025.
+              </div>
+            </li>
+            <li>
+              <time datetime="2025-07-04">Jul 4, 2025</time>
+              <div>
+                We are organizing the first
+                <a href="https://constrained-opt-ml.github.io" target="_blank" rel="noopener noreferrer">NeurIPS 2025 Workshop on Constrained Optimization for Machine Learning</a>.
+                See you in San Diego!
+              </div>
+            </li>
+            <li>
+              <time datetime="2025-01-01">Jan 1, 2025</time>
+              <div>
+                I am serving as an Associate Program Chair for
+                <a href="https://icml.cc/Conferences/2025/Committees" target="_blank" rel="noopener noreferrer">ICML 2025</a>.
+              </div>
+            </li>
+          </ul>
+
+          <details class="archive-box">
+            <summary>Archive</summary>
+
+            <div class="archive-year">
+              <h3 id="2025">2025</h3>
+              <ul class="news-list compact">
+                <li>
+                  <time datetime="2025-04-01">Apr 1, 2025</time>
+                  <div>
+                    We released version 1.0.0 of
+                    <a href="https://github.com/cooper-org/cooper" target="_blank" rel="noopener noreferrer">Cooper</a>,
+                    together with a companion
+                    <a href="https://arxiv.org/abs/2504.01212" target="_blank" rel="noopener noreferrer">paper</a>.
+                  </div>
+                </li>
+                <li>
+                  <time datetime="2025-01-22">Jan 22, 2025</time>
+                  <div>
+                    <a href="https://arxiv.org/abs/2501.14912" target="_blank" rel="noopener noreferrer">Feasible Learning</a>
+                    has been accepted at
+                    <a href="https://aistats.org/aistats2025/" target="_blank" rel="noopener noreferrer">AISTATS 2025</a>.
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="archive-year">
+              <h3 id="2024">2024</h3>
+              <ul class="news-list compact">
+                <li>
+                  <time datetime="2024-05-01">May 1, 2024</time>
+                  <div>
+                    <a href="https://arxiv.org/abs/2406.04558" target="_blank" rel="noopener noreferrer">On PI Controllers for Updating Lagrange Multipliers in Constrained Optimization</a>
+                    has been accepted at ICML 2024! Vienna, here we come again.
+                  </div>
+                </li>
+                <li>
+                  <time datetime="2024-01-16">Jan 16, 2024</time>
+                  <div>
+                    <a href="https://arxiv.org/abs/2310.20673" target="_blank" rel="noopener noreferrer">Balancing Act: Constraining Disparate Impact in Sparse Models</a>
+                    has been accepted at ICLR 2024! Vienna, here we come.
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="archive-year">
+              <h3 id="2023">2023</h3>
+              <ul class="news-list compact">
+                <li>
+                  <time datetime="2023-07-23">Jul 23, 2023</time>
+                  <div>
+                    Arriving in Honolulu, Hawaii, where I will have the pleasure to present
+                    <a href="https://arxiv.org/abs/2306.07905" target="_blank" rel="noopener noreferrer">Omega: Optimistic EMA Gradients</a>.
+                    Omega, our method for stochastic min–max optimization, was awarded an <i>oral</i>
+                    at the <a href="https://www.latinxinai.org/icml-2023" target="_blank" rel="noopener noreferrer">LatinX in AI workshop at ICML 2023</a>!
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="archive-year">
+              <h3 id="2022">2022</h3>
+              <ul class="news-list compact">
+                <li>
+                  <time datetime="2022-09-14">Sep 14, 2022</time>
+                  <div>
+                    I will be presenting my first NeurIPS paper:
+                    <a href="https://openreview.net/forum?id=XUvSYc6TqDF" target="_blank" rel="noopener noreferrer">Controlled Sparsity via Constrained Optimization or: How I Learned to Stop Tuning Penalties and Love Constraints</a>
+                    in New Orleans.
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="archive-year">
+              <h3 id="2021">2021</h3>
+              <ul class="news-list compact">
+                <li>
+                  <time datetime="2021-12-17">Dec 17, 2021</time>
+                  <div>
+                    <a href="https://openreview.net/forum?id=SUQsWPcK39P" target="_blank" rel="noopener noreferrer">Flexible Learning of Sparse Neural Networks via Constrained L0 Regularization</a>,
+                    won the <i>best poster</i> award at the LatinX in AI Workshop @ NeurIPS 2021!
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section id="publications" class="section">
+        <div class="container narrow">
+          <div class="section-header">
+            <h2 class="section-title">Publications</h2>
+            <p class="section-intro"><em>* denotes equal contribution. ^ denotes equal supervision.</em></p>
+          </div>
+
+          <div class="pub-group">
+            <h3>Preprints</h3>
+            <ol class="publication-list">
+              <li>
+                J. Gallego-Posada*, <strong>Juan Ramirez</strong>*, M. Hashemizadeh*, and S. Lacoste-Julien.
+                <a href="https://arxiv.org/abs/2504.01212" target="_blank" rel="noopener noreferrer">Cooper: A Library for Constrained Optimization in Deep Learning</a>.
+                arXiv:2504.01212, 2025.
+              </li>
+            </ol>
+          </div>
+
+          <div class="pub-group">
+            <h3>Conference</h3>
+            <ol class="publication-list">
+              <li>
+                <strong>Juan Ramirez</strong>, M. Hashemizadeh, and S. Lacoste-Julien.
+                <a href="https://arxiv.org/abs/2505.20628" target="_blank" rel="noopener noreferrer">Position: Adopt Constraints Over Fixed Penalties in Deep Learning</a>.
+                In <em>NeurIPS Position Paper Track</em>, 2026.
+              </li>
+              <li>
+                <strong>Juan Ramirez</strong> and S. Lacoste-Julien.
+                <a href="https://arxiv.org/abs/2509.22500" target="_blank" rel="noopener noreferrer">Dual Optimistic Ascent (PI Control) is the Augmented Lagrangian Method in Disguise</a>.
+                In <em>ICLR</em>, 2026.
+              </li>
+              <li>
+                <strong>Juan Ramirez</strong>*, I. Hounie*, J. Elenter*, J. Gallego-Posada*, M. Hashemizadeh, A. Ribeiro^, and S. Lacoste-Julien^.
+                <a href="https://arxiv.org/abs/2501.14912" target="_blank" rel="noopener noreferrer">Feasible Learning</a>.
+                In <em>AISTATS</em>, 2025.
+              </li>
+              <li>
+                M. Sohrabi*, <strong>Juan Ramirez</strong>*, T. H. Zhang, S. Lacoste-Julien, and J. Gallego-Posada.
+                <a href="https://arxiv.org/abs/2406.04558" target="_blank" rel="noopener noreferrer">On PI Controllers for Updating Lagrange Multipliers in Constrained Optimization</a>.
+                In <em>ICML</em>, 2024.
+              </li>
+              <li>
+                M. Hashemizadeh*, <strong>Juan Ramirez</strong>*, R. Sukumaran, G. Farnadi, S. Lacoste-Julien, and J. Gallego-Posada.
+                <a href="https://arxiv.org/abs/2310.20673" target="_blank" rel="noopener noreferrer">Balancing Act: Constraining Disparate Impact in Sparse Models</a>.
+                In <em>ICLR</em>, 2024.
+              </li>
+              <li>
+                J. Gallego-Posada, <strong>Juan Ramirez</strong>, A. Erraqabi, Y. Bengio, and S. Lacoste-Julien.
+                <a href="https://openreview.net/forum?id=XUvSYc6TqDF" target="_blank" rel="noopener noreferrer">Controlled Sparsity via Constrained Optimization or: How I Learned to Stop Tuning Penalties and Love Constraints</a>.
+                In <em>NeurIPS</em>, 2022.
+              </li>
+            </ol>
+          </div>
+
+          <div class="pub-group">
+            <h3>Workshop</h3>
+            <ol class="publication-list">
+              <li>
+                <strong>Juan Ramirez</strong>, R. Sukumaran, Q. Bertrand, and G. Gidel.
+                <a href="https://arxiv.org/abs/2306.07905" target="_blank" rel="noopener noreferrer">Omega: Optimistic EMA Gradients</a>.
+                <em>LatinX in AI Workshop at ICML</em>, 2023. Oral.
+              </li>
+              <li>
+                <strong>Juan Ramirez</strong> and J. Gallego-Posada.
+                <a href="https://arxiv.org/abs/2207.04144" target="_blank" rel="noopener noreferrer">L0onie: Compressing COINs with L0-constraints</a>.
+                <em>Sparsity in Neural Networks Workshop</em>, 2022.
+              </li>
+              <li>
+                J. Gallego-Posada, <strong>Juan Ramirez</strong>, and A. Erraqabi.
+                <a href="https://openreview.net/forum?id=SUQsWPcK39P" target="_blank" rel="noopener noreferrer">Flexible Learning of Sparse Neural Networks via Constrained L0 Regularization</a>.
+                <em>LatinX in AI Workshop at NeurIPS</em>, 2021. Best poster award.
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section id="service" class="section">
+        <div class="container two-column-grid">
+          <div>
+            <div class="section-header">
+              <h2 class="section-title">Service</h2>
+            </div>
+            <ul class="bullet-list">
+              <li>Associate Program Chair for <a href="https://icml.cc/Conferences/2025/Committees" target="_blank" rel="noopener noreferrer">ICML 2025</a>.</li>
+              <li>Organizer of the first <a href="https://constrained-opt-ml.github.io" target="_blank" rel="noopener noreferrer">Constrained Optimization for Machine Learning</a> workshop at NeurIPS 2025.</li>
+              <li>Reviewer for TMLR, ICLR 2027, ICLR 2026, ICML 2025, AISTATS 2025, NeurIPS 2024, and several LatinX in AI workshops.</li>
+              <li>Reviewer for Mila student supervision requests (2024, 2025).</li>
+              <li>Applicant reviewer for <a href="https://khipu.ai" target="_blank" rel="noopener noreferrer">Khipu</a> 2025.</li>
+              <li>Chair for the LatinX in AI workshops at <a href="https://www.latinxinai.org/icml-2024" target="_blank" rel="noopener noreferrer">ICML 2024</a> and <a href="https://www.latinxinai.org/neurips-2024" target="_blank" rel="noopener noreferrer">NeurIPS 2024</a>.</li>
+              <li>Co-supervised, with <a href="https://gallego-posada.github.io" target="_blank" rel="noopener noreferrer">Jose Gallego-Posada</a>, the undergraduate research projects of <a href="https://www.linkedin.com/in/doterog/" target="_blank" rel="noopener noreferrer">Daniel Otero</a> and <a href="https://www.linkedin.com/in/isabelurregog/" target="_blank" rel="noopener noreferrer">Isabel Urrego</a>, BSc students in Mathematical Engineering in Colombia (2023).</li>
+            </ul>
+          </div>
+
+          <div>
+            <section id="talks">
+              <div class="section-header">
+                <h2 class="section-title">Invited Talks</h2>
+              </div>
+
+              <ul class="bullet-list">
+                <li>
+                  <strong>May 21, 2026:</strong>
+                  <a href="https://arxiv.org/abs/2501.14912" target="_blank" rel="noopener noreferrer">Feasible Learning</a>,
+                  Morgan Stanley ML Research Speaker Series.
+                </li>
+                <li>
+                  <strong>Nov 19, 2025:</strong>
+                  <a href="https://arxiv.org/abs/2501.14912" target="_blank" rel="noopener noreferrer">Feasible Learning</a>,
+                  Montréal Machine Learning and Optimization (MTL MLOpt). <a href="https://youtu.be/htKvFNokwQc" target="_blank" rel="noopener noreferrer">Talk recording</a>.
+                </li>
+                <li>
+                  <strong>Dec 7, 2023:</strong>
+                  <a href="https://mtl-mlopt.github.io/talks_entries/2023/2023_12_07_Juan_Ramirez.html" target="_blank" rel="noopener noreferrer">Mitigating the Disparate Impact of Pruning with Constrained Optimization</a>,
+                  Montréal Machine Learning and Optimization (MTL MLOpt).
+                </li>
+              </ul>
+            </section>
+
+            <div id="teaching" style="margin-top: 3rem;">
+              <div class="section-header">
+                <h2 class="section-title">Teaching Assistantships</h2>
+              </div>
+              <ul class="bullet-list">
+                <li><strong>Fall 2023 and 2024:</strong> <a href="https://www.iro.umontreal.ca/~slacoste/teaching/ift6269/A24/" target="_blank" rel="noopener noreferrer">Probabilistic Graphical Models</a>, taught by <a href="https://www.iro.umontreal.ca/~slacoste/" target="_blank" rel="noopener noreferrer">Simon Lacoste-Julien</a>.</li>
+                <li><strong>Winter 2024:</strong> <a href="https://gauthiergidel.github.io/ift_6756_gt_ml/" target="_blank" rel="noopener noreferrer">Adversarial Machine Learning</a>, taught by <a href="https://gauthiergidel.github.io/" target="_blank" rel="noopener noreferrer">Gauthier Gidel</a>.</li>
+                <li><strong>Summer schools:</strong> <a href="https://tropical.probabilistic.ai" target="_blank" rel="noopener noreferrer">Tropical Probabilistic AI School</a> (2024), <a href="https://lxmls.it.pt" target="_blank" rel="noopener noreferrer">Lisbon Machine Learning School</a> (2024).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>
+          Juan Ramirez ·
+          <a href="mailto:juan.ramirez@mila.quebec">juan.ramirez@mila.quebec</a>
+        </p>
+        <p>
+          Last updated <time id="last-updated" datetime="2026-04-28">2026-04-28</time>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const el = document.getElementById('last-updated');
+      if (!el) return;
+      const d = new Date(document.lastModified);
+      if (Number.isNaN(d.getTime())) return;
+      el.textContent = d.toLocaleDateString('en-CA', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+      el.setAttribute('datetime', d.toISOString().split('T')[0]);
+    })();
+  </script>
+
+  <script>
+    // Scroll-spy: highlight the nav link for the section currently in view.
+    (function () {
+      if (!('IntersectionObserver' in window)) return;
+
+      const links = Array.from(document.querySelectorAll('.nav-list a[href^="#"]'));
+      if (!links.length) return;
+
+      const byId = new Map();
+      links.forEach((link) => {
+        const id = decodeURIComponent(link.hash.slice(1));
+        const section = id && document.getElementById(id);
+        if (section) byId.set(section, link);
+      });
+      if (!byId.size) return;
+
+      const visible = new Set();
+      const setActive = (link) => {
+        links.forEach((l) => l.classList.toggle('is-active', l === link));
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) visible.add(entry.target);
+          else visible.delete(entry.target);
+        });
+        // Pick the topmost currently-visible section.
+        let topmost = null;
+        let topY = Infinity;
+        visible.forEach((section) => {
+          const y = section.getBoundingClientRect().top;
+          if (y < topY) { topY = y; topmost = section; }
+        });
+        if (topmost) setActive(byId.get(topmost));
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+      byId.forEach((_link, section) => observer.observe(section));
+    })();
+
+    // Scroll-reveal: fade sections in as they enter the viewport.
+    (function () {
+      const motionOk = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+      if (!motionOk || !('IntersectionObserver' in window)) return;
+
+      const targets = document.querySelectorAll(
+        '.hero-grid, .card, .news-list > li, .archive-box, .pub-group, #service > .container > div'
+      );
+      if (!targets.length) return;
+
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+
+      targets.forEach((el, i) => {
+        el.classList.add('reveal');
+        // Gentle stagger within a group, capped so nothing lags noticeably.
+        el.style.transitionDelay = Math.min(i % 4, 3) * 60 + 'ms';
+        observer.observe(el);
+      });
+    })();
+  </script>
+</body>
+</html>
